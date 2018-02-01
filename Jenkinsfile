@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        emailext(subject: '${env.BUILD_ID}', attachLog: true, compressLog: true, body: '${env.BUILD_LOG}', to: 'xiaopan@xceder.com')
+        emailext(subject: 'default', attachLog: true, compressLog: true, body: 'default', to: 'xiaopan@xceder.com')
       }
     }
   }
