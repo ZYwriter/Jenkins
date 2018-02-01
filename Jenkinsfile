@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        emailext(subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', attachLog: true, compressLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:  Check console output at $BUILD_URL to view the results.', to: 'xiaopan@xceder.com')
+        emailext(subject: '$DEFAULT_SUBJECT', attachLog: true, compressLog: true, body: '$DEFAULT_CONTENT', to: 'xiaopan@xceder.com', replyTo: '$DEFAULT_REPLYTO', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_RECIPIENTS')
       }
     }
   }
