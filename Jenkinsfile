@@ -17,24 +17,4 @@ echo something'''
       }
     }
   }
-   post {
-        success {  
-          emailext (
-            subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - Successful!",
-            
-            recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-            body: '$DEFAULT_CONTENT',  
-                    
-          )
-        }
-
-        failure {
-          emailext (
-            subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - Successful!",
-            
-            recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'FailingTestSuspectsRecipientProvider']],  
-            body: '$DEFAULT_CONTENT',
-          )
-        }
-    }
 }
