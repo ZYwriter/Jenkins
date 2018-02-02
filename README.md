@@ -6,4 +6,4 @@ Jenkins测试仓库
 
 发送到发
 sdsdfsdffsdsfaafdsffds
-测试
+测试发生的都是粉色的
