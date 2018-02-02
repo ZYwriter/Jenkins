@@ -9,12 +9,11 @@ echo something'''
     }
     stage('Test') {
       steps {
-        emailext(subject: '$DEFAULT_SUBJECT',
+        emailext(
+        subject: '$DEFAULT_SUBJECT',
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-        body: '$DEFAULT_CONTENT', replyTo: '$DEFAULT_REPLYTO', 
-        postsendScript: '$DEFAULT_POSTSEND_SCRIPT', 
-        presendScript: '$DEFAULT_RECIPIENTS', 
-        to: '$DEFAULT_RECIPIENTS')
+        body: '$DEFAULT_CONTENT'
+        )
       }
     }
   }
@@ -22,20 +21,19 @@ echo something'''
         success {  
           emailext (
             subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - Successful!",
-            to: '$DEFAULT_RECIPIENTS',
+            
             recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-            body: '',  
-            attachLog: true           
+            body: '$DEFAULT_CONTENT',  
+                    
           )
         }
 
         failure {
           emailext (
             subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - Successful!",
-            to: '$DEFAULT_RECIPIENTS',
+            
             recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'FailingTestSuspectsRecipientProvider']],  
-            body: '',
-            attachLog: true            
+            body: '$DEFAULT_CONTENT',
           )
         }
     }
