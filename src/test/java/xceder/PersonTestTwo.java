@@ -32,7 +32,7 @@ public class PersonTestTwo {
     @Test
     public void setAge() {
         person.setAge(12);
-        assertNotEquals(person.getAge(),13);
+        assertNotEquals(person.getAge(),12);
     }
 
     @Test
