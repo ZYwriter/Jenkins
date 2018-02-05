@@ -10,7 +10,7 @@ echo something'''
     stage('Test') {
       steps {
         emailext(subject: '$DEFAULT_SUBJECT', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], body: '$DEFAULT_CONTENT', to: '$DEFAULT_RECIPIENTS')
-        sh 'mvn clean test'
+        sh 'mvn test'
       }
     }
   }
